@@ -10,10 +10,13 @@ HttpClient _scClient = new();
 
 #region redis
 
+/*
 ConnectionMultiplexer redis = ConnectionMultiplexer.Connect($"{_conf.RdsServer},password={_conf.RdsPwd},name=Note163Checkin,defaultDatabase=0,allowadmin=true,abortConnect=false");
 IDatabase db = redis.GetDatabase();
 bool isRedis = db.IsConnected("test");
 Console.WriteLine("redis:{0}", isRedis ? "有效" : "无效");
+*/
+bool isRedis = false;
 
 #endregion
 
