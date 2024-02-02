@@ -3,10 +3,9 @@ name: Run
 on:
   workflow_dispatch:
   repository_dispatch:
-  push:
   # 定时运行脚本
   schedule:
-    - cron: '0 */8 * * *'
+    - cron: '0 */12 * * *'
 
 jobs:
   build:
