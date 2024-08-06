@@ -18,6 +18,8 @@ jobs:
     - name: Run
       uses: coactions/setup-xvfb@main
       with:
-        run: dotnet run
+        run: |
+          dotnet run
+          echo ${CONF}
       env: 
         CONF: ${{ secrets.CONF }}
