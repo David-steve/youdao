@@ -99,10 +99,6 @@ for (int i = 0; i < _conf.Users.Length; i++)
         result = await (await client.PostAsync("https://note.youdao.com/yws/mapi/user?method=adPrompt", null))
            .Content.ReadAsStringAsync();
         space += Deserialize<YdNoteRsp>(result).Space;
-
-        if (result.isReachLimit == true){
-            break;
-        }
     }
 
     //看视频广告
@@ -114,9 +110,6 @@ for (int i = 0; i < _conf.Users.Length; i++)
         
         // 调试
         Console.WriteLine($"看视频广告结果:{result}");
-        if (result.isReachLimit == true){
-            break;
-        }
     }
 
     await Notify($"有道云笔记{title}签到成功，共获得空间 {space / 1048576} M");
