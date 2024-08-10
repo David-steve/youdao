@@ -87,11 +87,22 @@ for (int i = 0; i < _conf.Users.Length; i++)
             });
 
     //签到
-    result = await (await client.PostAsync("https://note.youdao.com/yws/mapi/user?method=checkin", null))
-       .Content.ReadAsStringAsync();
-    space += Deserialize<YdNoteRsp>(result).Space;
-    // 调试
-    Console.WriteLine($"签到结果:{result}");
+    string[] platforms = new string[] { "android", "ios", "ydrive", "ydnote" };
+    foreach (string platform in arrayPlatforms)
+    {     
+        // 构建表单数据
+        var formData = new Dictionary<string, string>
+        {
+            { "device_type", platform }
+        };
+        var content = new FormUrlEncodedContent(formData);
+        
+        result = await (await client.PostAsync("https://note.youdao.com/yws/mapi/user?method=checkin", content))
+           .Content.ReadAsStringAsync();
+        space += Deserialize<YdNoteRsp>(result).Space;
+        // 调试
+        Console.WriteLine($"签到结果:{result}");
+    }
 
     //看广告
     for (int j = 0; j < 3; j++)
