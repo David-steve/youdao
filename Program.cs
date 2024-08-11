@@ -87,11 +87,12 @@ for (int i = 0; i < _conf.Users.Length; i++)
             });
 
     //签到
+    var formData;
     string[] platforms = new string[] { "android", "ios", "ydrive", "ydnote" };
     foreach (string platform in platforms)
     {     
         // 构建表单数据
-        var formData = new Dictionary<string, string>
+        formData = new Dictionary<string, string>
         {
             { "device_type", platform }
         };
