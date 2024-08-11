@@ -80,11 +80,11 @@ for (int i = 0; i < _conf.Users.Length; i++)
     long space = 0;
     space += Deserialize<YdNoteRsp>(result).RewardSpace;
 
-    // post data
-    var content = new FormUrlEncodedContent(new[]
-            {
-                new KeyValuePair<string, string>("device_type", "android")
-            });
+    // // post data
+    // var content = new FormUrlEncodedContent(new[]
+    //         {
+    //             new KeyValuePair<string, string>("device_type", "android")
+    //         });
 
     //签到
     var formData;
