@@ -91,7 +91,7 @@ for (int i = 0; i < _conf.Users.Length; i++)
     foreach (string platform in platforms)
     {     
         // 构建表单数据
-        formData = new Dictionary<string, string>
+        var formData = new Dictionary<string, string>
         {
             { "device_type", platform }
         };
