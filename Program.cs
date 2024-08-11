@@ -87,7 +87,6 @@ for (int i = 0; i < _conf.Users.Length; i++)
     //         });
 
     //签到
-    var formData;
     string[] platforms = new string[] { "android", "ios", "ydrive", "ydnote" };
     foreach (string platform in platforms)
     {     
