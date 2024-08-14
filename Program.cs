@@ -110,6 +110,8 @@ for (int i = 0; i < _conf.Users.Length; i++)
         result = await (await client.PostAsync("https://note.youdao.com/yws/mapi/user?method=adPrompt", null))
            .Content.ReadAsStringAsync();
         space += Deserialize<YdNoteRsp>(result).Space;
+        
+        Console.WriteLine($"看广告结果:{result}");
     }
 
     //看视频广告
