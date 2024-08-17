@@ -119,7 +119,12 @@ for (int i = 0; i < _conf.Users.Length; i++)
     {
         result = await (await client.PostAsync("https://note.youdao.com/yws/mapi/user?method=adRandomPrompt", null))
            .Content.ReadAsStringAsync();
-        space += Deserialize<YdNoteRsp>(result).Space;
+        try{
+            space += Deserialize<YdNoteRsp>(result).Space;
+        }
+        catch (Exception ex){
+            Console.WriteLine($"response解析失败:{result}");
+        }
         
         // 调试
         Console.WriteLine($"看视频广告结果:{result}");
