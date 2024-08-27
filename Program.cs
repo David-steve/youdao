@@ -99,7 +99,12 @@ for (int i = 0; i < _conf.Users.Length; i++)
         
         result = await (await client.PostAsync("https://note.youdao.com/yws/mapi/user?method=checkin", content))
            .Content.ReadAsStringAsync();
-        space += Deserialize<YdNoteRsp>(result).Space;
+        try{
+            space += Deserialize<YdNoteRsp>(result).Space;
+        }
+        catch (Exception ex){
+            Console.WriteLine($"response解析失败:{ex}");
+        }
         // 调试
         Console.WriteLine($"签到结果:{result}");
     }
