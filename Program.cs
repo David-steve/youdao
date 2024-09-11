@@ -78,7 +78,12 @@ for (int i = 0; i < _conf.Users.Length; i++)
     client.DefaultRequestHeaders.Add("Cookie", cookie);
 
     long space = 0;
-    space += Deserialize<YdNoteRsp>(result).RewardSpace;
+    try{
+        space += Deserialize<YdNoteRsp>(result).RewardSpace;
+    }
+    catch (Exception ex){
+            Console.WriteLine($"result解析失败:{ex}");
+        }
 
     // // post data
     // var content = new FormUrlEncodedContent(new[]
