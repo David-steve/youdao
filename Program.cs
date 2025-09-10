@@ -15,12 +15,13 @@ ConnectionMultiplexer redis = ConnectionMultiplexer.Connect($"{_conf.RdsServer},
 IDatabase db = redis.GetDatabase();
 bool isRedis = db.IsConnected("test");
 Console.WriteLine("redis:{0}", isRedis ? "有效" : "无效");
+Console.WriteLine($"{_conf.RdsServer},password={_conf.RdsPwd},name=Note163Checkin,defaultDatabase=0,allowadmin=true,abortConnect=false");
 
 
 #endregion
 
 Console.WriteLine("有道云笔记签到开始运行...");
-for (int i = 0; i < _conf.Users.Length; i++)
+for (int i = 2; i < _conf.Users.Length; i++)
 {
     User user = _conf.Users[i];
     string title = $"账号 {i + 1}: {user.Task} ";
