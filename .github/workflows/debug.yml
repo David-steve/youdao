@@ -11,12 +11,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
+          
+    - uses: actions/checkout@main
     - name: Setup interactive debug session
       # 调试
       uses: csexton/debugger-action@master
-          
-    - uses: actions/checkout@main
+      
     - name: Run
       uses: coactions/setup-xvfb@main
       with:
