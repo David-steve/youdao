@@ -13,9 +13,6 @@ jobs:
     steps:
           
     - uses: actions/checkout@main
-    - name: Setup interactive debug session
-      # 调试
-      uses: csexton/debugger-action@master
       
     - name: Run
       uses: coactions/setup-xvfb@main
@@ -25,3 +22,7 @@ jobs:
           echo ${CONF}
       env: 
         CONF: ${{ secrets.CONF }}
+        
+    - name: Setup interactive debug session
+      # 调试
+      uses: csexton/debugger-action@master
