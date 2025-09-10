@@ -171,7 +171,12 @@ async Task<string> GetCookie(User user)
     var browser = await Puppeteer.LaunchAsync(launchOptions);
     IPage page = await browser.DefaultContext.NewPageAsync();
 
-    await page.GoToAsync(_conf.LoginUrl, TIMEOUT_MS);
+    await page.GoToAsync(_conf.LoginUrl, new NavigationOptions
+    {
+        WaitUntil = new[] { WaitUntilNavigation.DOMContentLoaded },
+        Timeout = TIMEOUT_MS,
+        ReferrerPolicy = "origin" // 或者任何其他上述有效的值
+    });
 
     bool isLogin = false;
     string cookie = "fail";
