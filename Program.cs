@@ -52,7 +52,7 @@ for (int i = 0; i < _conf.Users.Length; i++)
                 Console.WriteLine("redis获取cookie,状态:{0}", isInvalid ? "无效" : "有效");
             }
         }
-
+            
         if (isInvalid)
         {
             cookie = await GetCookie(user);
@@ -65,6 +65,7 @@ for (int i = 0; i < _conf.Users.Length; i++)
             }
         }
 
+        Console.WriteLine($"【debug】 redis key:{redisKey}, {cookie}");
         if (isRedis)
         {
             Console.WriteLine($"redis更新cookie:{await db.StringSetAsync(redisKey, cookie)}");
