@@ -1,0 +1,30 @@
+name: Run
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+  # 定时运行脚本
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  build:
+
+    if: github.actor == github.repository_owner
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Setup interactive debug session
+      # 调试
+      uses: csexton/debugger-action@master
+          
+    - uses: actions/checkout@main
+    - name: Run
+      uses: coactions/setup-xvfb@main
+      with:
+        run: |
+          dotnet run
+          echo ${CONF}
+      env: 
+        CONF: ${{ secrets.CONF }}
