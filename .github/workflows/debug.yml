@@ -12,7 +12,7 @@ jobs:
 
     steps:
           
-    - uses: actions/checkout@debug
+    - uses: actions/checkout@main
         
     - name: Setup interactive debug session
       # 调试
