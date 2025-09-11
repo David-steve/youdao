@@ -17,6 +17,8 @@ jobs:
     - name: Setup interactive debug session
       # 调试
       uses: csexton/debugger-action@master
+      env: 
+        CONF: ${{ secrets.CONF }}
       
     - name: Run
       uses: coactions/setup-xvfb@main
